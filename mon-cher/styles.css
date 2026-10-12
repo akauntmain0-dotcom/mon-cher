@@ -1,0 +1,566 @@
+/* Mon Cher — дизайн от вывески.
+   Единственный эффектный мотив: шоколадная маркиза с кремовой
+   каллиграфией — как настоящий козырёк салона на Тополиной.
+   Кирпичный акцент — от фасада. Всё остальное молчит. */
+
+:root {
+  --paper: #f7f1e4;
+  --paper-deep: #efe5cf;
+  --choc: #2b1a10;
+  --choc-deep: #1d1009;
+  --ink: #241610;
+  --muted: #75665a;
+  --faint: #ab9c8d;
+  --line: #e0d4bd;
+  --line-dark: #ffffff26;
+  --brick: #9c4a32;
+  --gold: #a8842f;
+  --cream: #f7f1e4;
+  --focus: #7a5c2e;
+  --max: 1080px;
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --script: "Marck Script", cursive;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--choc); color: var(--cream); }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 16px;
+  font-size: 14px;
+  z-index: 100;
+  transition: top 0.2s;
+}
+.skip:focus { top: 12px; }
+
+.wrap {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: 32px;
+}
+
+/* Каллиграфия — только там, где её носит сам салон: вывеска */
+.script {
+  font-family: var(--script);
+  font-weight: 400;
+}
+.script.inline { font-size: 1.15em; }
+
+/* ——— Шапка ——— */
+.site-head {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(247, 241, 228, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.head-in {
+  display: flex;
+  align-items: baseline;
+  gap: 32px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.wordmark {
+  text-decoration: none;
+  font-size: 30px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.site-head nav {
+  display: flex;
+  gap: 24px;
+  margin-left: auto;
+  font-size: 14px;
+}
+
+.site-head nav a {
+  text-decoration: none;
+  color: var(--muted);
+}
+.site-head nav a:hover { color: var(--ink); }
+
+.head-phone {
+  font-size: 14px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1px;
+  white-space: nowrap;
+}
+.head-phone:hover { border-color: var(--ink); }
+
+/* ——— Герой: маркиза ——— */
+.hero {
+  background: var(--choc);
+  color: var(--cream);
+}
+
+.hero-in { padding-top: 88px; }
+
+.hero-eyebrow {
+  font-size: 14px;
+  color: #d8c9ac;
+  margin: 0 0 28px;
+  padding-left: 44px;
+  position: relative;
+}
+.hero-eyebrow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 30px;
+  height: 1px;
+  background: var(--brick);
+}
+
+.hero h1 { margin: 0 0 24px; }
+
+.script.big {
+  display: block;
+  font-size: clamp(72px, 12vw, 150px);
+  line-height: 1;
+  transform: rotate(-2deg);
+  transform-origin: left center;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35);
+}
+
+.h1-sub {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(22px, 3vw, 32px);
+  color: #e4d5b4;
+  margin-top: 18px;
+}
+
+.lede {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #e9ddc2;
+  opacity: 0.85;
+  max-width: 60ch;
+  margin: 0 0 28px;
+}
+
+.hero-rating {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: #e9ddc2;
+  margin: 0 0 36px;
+}
+.hero-rating b { font-weight: 600; }
+
+.stars { color: var(--gold); letter-spacing: 2px; }
+.hero-rating .stars { color: #d9b45a; }
+.stars i { font-style: normal; opacity: 0.3; }
+
+.actions {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+  margin: 0;
+  padding-bottom: 72px;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-block;
+  background: var(--choc);
+  color: var(--cream);
+  border: 1px solid var(--choc);
+  padding: 13px 30px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s;
+}
+.button:hover { background: transparent; color: var(--choc); }
+
+.button.light { background: var(--cream); border-color: var(--cream); color: var(--choc); }
+.button.light:hover { background: transparent; color: var(--cream); }
+
+.routelink {
+  font-size: 15px;
+  color: var(--cream);
+  text-decoration: underline;
+  text-decoration-color: #ffffff55;
+  text-underline-offset: 4px;
+}
+.routelink:hover { text-decoration-color: var(--cream); }
+
+/* Фестончатый край маркизы — переход к бумаге */
+.awning {
+  height: 26px;
+  background-image: radial-gradient(circle at 50% 100%, var(--choc) 62%, transparent 63%);
+  background-size: 44px 26px;
+  background-repeat: repeat-x;
+  background-color: var(--paper);
+}
+
+/* ——— Секции ——— */
+.section { padding-top: 96px; }
+
+.section h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(34px, 4vw, 54px);
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  margin: 0 0 12px;
+}
+
+.section-note {
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 62ch;
+  margin: 0 0 40px;
+}
+
+/* Услуги */
+.services { margin: 0; }
+
+.service {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 24px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}
+.service:last-child { border-bottom: 1px solid var(--line); }
+
+.service dt {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.service .meta {
+  display: block;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.service dd {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 52ch;
+  grid-column: 1;
+}
+
+.booklink {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: start;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--brick);
+  padding: 4px 0;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.booklink:hover { border-bottom-width: 2px; }
+
+/* Отзывы: кирпичная черта от фасада */
+.quotes {
+  list-style: none;
+  margin: 0 0 32px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 40px;
+}
+
+.quotes li {
+  border-top: 2px solid var(--brick);
+  padding-top: 24px;
+}
+
+.quotes blockquote {
+  margin: 14px 0 16px;
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.quotes .who {
+  margin: 0;
+  font-size: 13px;
+  color: var(--faint);
+}
+
+.rating-note {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 62ch;
+  margin: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+/* Визит */
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 40px;
+  margin-bottom: 40px;
+  align-items: start;
+}
+
+.visit-grid address {
+  font-style: normal;
+  font-size: 17px;
+  line-height: 1.9;
+  font-family: var(--serif);
+  font-size: 22px;
+}
+
+.visit-grid address a {
+  font-family: var(--sans);
+  font-size: 15px;
+  text-decoration: underline;
+  text-decoration-color: var(--faint);
+  text-underline-offset: 4px;
+}
+
+.visit-grid p { margin: 0 0 24px; color: var(--muted); font-size: 15px; }
+.visit-grid p:last-child { margin-bottom: 0; }
+
+.hours { border-collapse: collapse; width: 100%; font-size: 15px; }
+.hours caption {
+  text-align: left;
+  font-size: 14px;
+  color: var(--muted);
+  padding-bottom: 12px;
+}
+.hours th,
+.hours td {
+  text-align: left;
+  font-weight: 400;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+.hours tr:last-child th,
+.hours tr:last-child td { border-bottom: 1px solid var(--line); }
+.hours td { text-align: right; white-space: nowrap; padding-left: 24px; }
+
+/* Запись */
+#form { max-width: 520px; }
+.field { margin-bottom: 20px; }
+.field label { display: block; font-size: 14px; margin-bottom: 8px; }
+.field input,
+.cselect-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  padding: 13px 14px;
+  border-radius: 0;
+  text-align: left;
+}
+.field input:focus,
+.cselect-btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -1px;
+  border-color: var(--focus);
+}
+
+/* Кастомный список услуг — никакого системного синего */
+.cselect { position: relative; }
+.cselect-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+.cselect-btn svg { flex: none; transition: transform 0.2s; }
+.cselect-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+.cselect-list {
+  position: absolute;
+  top: -7px;
+  left: calc(100% + 12px);
+  width: max-content;
+  min-width: 260px;
+  max-width: min(340px, 60vw);
+  max-height: 320px;
+  overflow: auto;
+  z-index: 40;
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  background: var(--paper);
+  border: 1px solid var(--choc);
+}
+.cselect-list li {
+  padding: 12px 14px;
+  font-size: 15px;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+}
+.cselect-list li:hover,
+.cselect-list li.focused { background: var(--choc); color: var(--cream); }
+.cselect-list li[aria-selected="true"] { border-left-color: var(--brick); }
+.cselect-list li:hover[aria-selected="true"],
+.cselect-list li.focused[aria-selected="true"] { border-left-color: var(--cream); }
+.form-error { color: #8c2f1b; font-size: 14px; margin-top: 16px; }
+.form-done {
+  font-family: var(--serif);
+  font-size: 24px;
+  max-width: 520px;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+/* Работы: спокойная сетка, фото + подпись с ценой */
+.works {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 24px;
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+}
+
+.works figure {
+  margin: 0;
+  background: var(--choc);
+  border: 1px solid var(--choc);
+  padding: 14px 14px 6px;
+  color: var(--cream);
+}
+
+.works .wprice { color: #e8cf8f; }
+
+.works img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: var(--paper-deep);
+}
+
+.works figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-top: 12px;
+  font-size: 15px;
+}
+
+.works .wprice {
+  font-family: var(--serif);
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+/* Подвал: шоколад, как маркиза ночью */
+.site-foot { margin-top: 120px; background: var(--choc-deep); color: #d8c9ac; }
+.foot-in {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-top: 32px;
+  padding-bottom: 40px;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+.foot-in .script { font-size: 34px; color: var(--cream); transform: rotate(-2deg); display: inline-block; }
+
+/* Единственный жест появления */
+.rise { opacity: 0; transform: translateY(16px); }
+.rise.in { opacity: 1; transform: none; transition: opacity 0.8s ease, transform 0.8s ease; }
+.hero-in.rise.in { transition-duration: 1s; }
+
+/* Ноутбуки: вбок уже тесно — список открывается вниз */
+@media (max-width: 1200px) {
+  .cselect-list {
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    max-height: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .wrap { padding-inline: 20px; }
+  .site-head nav { display: none; }
+  .head-in { gap: 16px; }
+  .wordmark { font-size: 25px; }
+  .head-phone { margin-left: auto; }
+  .hero-in { padding-top: 56px; }
+  .quotes { grid-template-columns: 1fr; gap: 32px; }
+  .works { grid-template-columns: 1fr; }
+  .visit-grid { grid-template-columns: 1fr; }
+  .service { grid-template-columns: 1fr; }
+  .booklink { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 8px; }
+  .cselect-list {
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
+  .section { padding-top: 72px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise { opacity: 1; transform: none; }
+  .rise.in { transition: none; }
+  .script.big { transform: none; }
+}
